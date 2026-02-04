@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Quick URL Launcher",
+  "version": "2.0",
+  "description": "Omnisearch and fuzzy URL finder with keyboard shortcuts",
+  "permissions": ["tabs", "storage", "scripting", "history", "topSites"],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "omnisearch": {
+      "suggested_key": {
+        "default": "Alt+Shift+O"
+      },
+      "description": "Open omnisearch (URL or Google search)"
+    },
+    "omnisearch-consume": {
+      "suggested_key": {
+        "default": "Alt+O"
+      },
+      "description": "Open omnisearch and remove current URL from saved list"
+    },
+    "url-finder": {
+      "suggested_key": {
+        "default": "Alt+T"
+      },
+      "description": "Open saved URLs fuzzy finder"
+    }
+  }
+}
